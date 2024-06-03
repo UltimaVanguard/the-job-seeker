@@ -1,7 +1,7 @@
 import './App.css'
 
 // imports authentication utility
-import Auth from '/utils/auth.js';
+// import Auth from '/utils/auth.js';
 
 // imports what we need to connect to the graphql server
 import {
@@ -51,11 +51,11 @@ function App() {
       <ChakraProvider>
         <Header />
         {/* if user is not logged in, routes to login page */}
-        {Auth.loggedIn() ? (
+        {/* {Auth.loggedIn() ? ( */}
           <Outlet />
-        ) : (
-          <Login />
-        )}
+        {/* ) : ( */}
+          {/* <Login /> */}
+        {/* )} */}
         <Footer />
       </ChakraProvider>
     </ApolloProvider>  
