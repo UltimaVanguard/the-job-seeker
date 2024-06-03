@@ -1,4 +1,5 @@
 import './App.css'
+import { useState } from 'react';
 
 // imports authentication utility
 // import Auth from '/utils/auth.js';
@@ -12,6 +13,8 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
+
+import Login from './pages/Login';
 
 // imports Chakra UI
 import { ChakraProvider } from '@chakra-ui/react';
@@ -46,15 +49,16 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const [loginState, setLoginState] = useState(true);
   return (
     <ApolloProvider client={client}>
       <ChakraProvider>
-        <Header />
+        <Header loginState={loginState} setLoginState={setLoginState}/>
         {/* if user is not logged in, routes to login page */}
         {/* {Auth.loggedIn() ? ( */}
-          <Outlet />
+          {/* <Outlet /> */}
         {/* ) : ( */}
-          {/* <Login /> */}
+          <Login loginState={loginState} setLoginState={setLoginState}/>
         {/* )} */}
         <Footer />
       </ChakraProvider>
