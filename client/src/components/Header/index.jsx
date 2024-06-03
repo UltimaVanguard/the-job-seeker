@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 // import Auth from '../../utils/auth';
 import { Button} from '@chakra-ui/react';
 
-const Header = () => {
-    const [loginState, setLoginState] = useState(true);
+const Header = ({ loginState, setLoginState}) => {
+    // const [loginState, setLoginState] = useState(true);
     const logout = (event) => {
         event.preventDefault();
         Auth.logout();
