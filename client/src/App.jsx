@@ -56,9 +56,9 @@ function App() {
         <Header loginState={loginState} setLoginState={setLoginState}/>
         {/* if user is not logged in, routes to login page */}
         {/* {Auth.loggedIn() ? ( */}
-          {/* <Outlet /> */}
+          <Outlet />
         {/* ) : ( */}
-          <Login loginState={loginState} setLoginState={setLoginState}/>
+          {/* <Login loginState={loginState} setLoginState={setLoginState}/> */}
         {/* )} */}
         <Footer />
       </ChakraProvider>
