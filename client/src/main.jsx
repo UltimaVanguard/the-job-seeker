@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from './App.jsx';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
+import CreateProfile from './pages/CreateProfile';
 import ErrorPage from './pages/ErrorPage';
 
 // creates routers to redirect to our pages
@@ -24,6 +25,9 @@ const router = createBrowserRouter([
       }, {
         path: '/me',
         element: <Profile />
+      }, {
+        path: '/newProfile',
+        element: <CreateProfile />
       },
     ]
   },

@@ -1,14 +1,16 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-// import { useMutation } from '@apollo/client';
-// import { LOGIN_USER } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
+// import { LOGIN_USER, ADD_USER } from '../utils/mutations';
 
 // import Auth from '../utils/auth';
 
-import { VStack, Input, Button, InputRightElement, InputGroup, Select} from '@chakra-ui/react';
+import { VStack, Input, Button, InputRightElement, InputGroup, Select,
+         FormControl, FormLabel, FormErrorMessage, FormHelperText} from '@chakra-ui/react';
 
 const Login = ({ loginState, setLoginState }) => {
-    const [formState, setFormState] = useState({ username: '', email: '', password: '', role: '' });
+    const [logState, setLogState] = useState({ email: '', password: '' });
+    const [signupState, setSignupState] = useState({ username: '', email: '', password: '', role: '' });
+    const [selected, setSelected] = useState('');
     const [show, setShow] = useState(false)
     // const [login, { error, data }] = useMutation(LOGIN_USER);
     // const [signup, { error, data}] = useMutation(ADD_USER);
@@ -18,114 +20,177 @@ const Login = ({ loginState, setLoginState }) => {
     const handleChange = (event) => {
         const { name, value } = event.target;
 
-        setFormState({
-            ...formState,
-            [name]: value,
-        });  
+
+        if (loginState) {
+            setLogState({
+                ...logState,
+                [name]: value,
+            });
+        } else {
+            setSignupState({
+                ...signupState,
+                [name]: value,
+            });
+            
+            if (name === 'role') {
+                setSelected(value)
+            }
+        }
     };
 
-    const handleFormSubmit = async (event) => {
+    const handleLoginSubmit = async (event) => {
         event.preventDefault();
 
         // try {
-        //     if (loginState) {
-        //         const { data } = await login({
-        //             variables: {email, password},
-        //         })
+        //     const { data } = await login({
+        //         variables: {...logState},
+        //     })
 
-        //         Auth.login(data.login.token);
-        //     } else {
-        //         const { data } = await signup({
-        //             variables: {...formState},
-        //         })
-
-        //         Auth.login(data.signup.token);
-        //     };
+        //     Auth.login(data.login.token);
         // } catch (err) {
         //     console.error(err);
         // };
 
-        setFormState({
+        setLogState({
+            email: '',
+            password: '',
+        })
+    }
+
+    const handleSignupSubmit = async (event) => {
+        event.preventDefault();
+
+        // try {
+        //     const { data } = await signup({
+        //         variables: {...signupState},
+        //     })
+
+        //     Auth.login(data.signup.token);
+        // } catch (err) {
+        //     console.error(err);
+        // };
+
+        setSignupState({
             username: '',
             email: '',
             password: '',
             role: '',
         })
+        setSelected('');
     }
+
+    const userError = signupState.username === '';
+    const emailSignError = signupState.email === '';
+    const pwSignError = signupState.password === '';
 
     return (
         <main>
-            <form onSubmit={handleFormSubmit}>
-                {loginState ? (
-                    <VStack spacing={3}>
+            {loginState ? (
+                <form onSubmit={handleLoginSubmit}>
+                    <VStack spacing={4}>
                         <h2>Login</h2>
-                        <Input
-                            name='email'
-                            type='text'
-                            placeholder='Email'
-                            value={formState.email}
-                            onChange={handleChange}
-                        />
-                        <InputGroup size='md'>
+                        <FormControl>
+                            <FormLabel>Email:</FormLabel>
                             <Input
-                                pr='4.5rem'
-                                name='password'
-                                type={show ? 'text' : 'password'}
-                                placeholder='Password'
-                                value={formState.password}
+                                name='email'
+                                type='text'
+                                placeholder='Email'
+                                value={logState.email}
                                 onChange={handleChange}
                             />
-                            <InputRightElement width='4.5rem'>
-                                <Button h="1.75rem" size='sm' onClick={handleClick}>
-                                    {show ? 'Hide' : 'Show'}
-                                </Button>
-                            </InputRightElement>
-                        </InputGroup>
+                        </FormControl>
+                        <FormControl>
+                        <FormLabel>Password:</FormLabel>
+                            <InputGroup size='md'>
+                                <Input
+                                    pr='4.5rem'
+                                    name='password'
+                                    type={show ? 'text' : 'password'}
+                                    placeholder='Password'
+                                    value={logState.password}
+                                    onChange={handleChange}
+                                />
+                                <InputRightElement width='4.5rem'>
+                                    <Button h="1.75rem" size='sm' onClick={handleClick}>
+                                        {show ? 'Hide' : 'Show'}
+                                    </Button>
+                                </InputRightElement>
+                            </InputGroup>
+                        </FormControl>
                         <Button colorScheme='green' variant='outline' type='submit'>
                             Submit
                         </Button>
                     </VStack>
-                ) : (
-                    <VStack spacing={3}>
+                </form>
+            ) : (
+                <form onSubmit={handleSignupSubmit}>
+                    <VStack spacing={4}>
                         <h2>Signup</h2>
-                        <Input
-                            name='username'
-                            type='text'
-                            placeholder='username'
-                            value={formState.username}
-                            onChange={handleChange}
-                        />
-                        <Input
-                            name='email'
-                            type='text'
-                            placeholder='Email'
-                            value={formState.email}
-                            onChange={handleChange}
-                        />
-                        <InputGroup size='md'>
+                        <FormControl isRequired isInvalid={userError}>    
+                            <FormLabel>Username:</FormLabel>
                             <Input
-                                name='password'
-                                type={show ? 'text' : 'password'}
-                                placeholder='Password'
-                                value={formState.password}
+                                name='username'
+                                type='text'
+                                placeholder='username'
+                                value={signupState.username}
                                 onChange={handleChange}
                             />
-                            <InputRightElement width='4.5rem'>
-                                <Button h="1.75rem" size='sm' onClick={handleClick}>
-                                    {show ? 'Hide' : 'Show'}
-                                </Button>
-                            </InputRightElement>
-                        </InputGroup>
-                        <Select name='role' placeholder='Select role'>
-                            <option value='employer'>Employer</option>
-                            <option value='jobseeker'>Job Seeker</option>
-                        </Select>
+                            {userError ? (
+                                <FormErrorMessage>Username is required.</FormErrorMessage>
+                            ) : (
+                                <FormHelperText>Enter your username.</FormHelperText>
+                            )}
+                        </FormControl>
+                        <FormControl isRequired isInvalid={emailSignError}>
+                            <FormLabel>Email:</FormLabel>
+                            <Input
+                                name='email'
+                                type='text'
+                                placeholder='Email'
+                                value={signupState.email}
+                                onChange={handleChange}
+                            />
+                            {emailSignError ? (
+                                <FormErrorMessage>Email is required.</FormErrorMessage>
+                            ) : (
+                                <FormHelperText>Enter your email.</FormHelperText>
+                            )}
+                        </FormControl>
+                        <FormControl isRequired isInvalid={pwSignError}>
+                            <FormLabel>Password:</FormLabel>
+                            <InputGroup size='md'>
+                                <Input
+                                    name='password'
+                                    type={show ? 'text' : 'password'}
+                                    placeholder='Password'
+                                    value={signupState.password}
+                                    onChange={handleChange}
+                                />
+                                <InputRightElement width='4.5rem'>
+                                    <Button h="1.75rem" size='sm' onClick={handleClick}>
+                                        {show ? 'Hide' : 'Show'}
+                                    </Button>
+                                </InputRightElement>
+                            </InputGroup>
+                            {pwSignError ? (
+                                <FormErrorMessage>Password is required.</FormErrorMessage>
+                            ) : (
+                                <FormHelperText>Enter your password.</FormHelperText>
+                            )}
+                        </FormControl>
+                        <FormControl isRequired>
+                            <FormLabel>Role:</FormLabel>
+                            <Select value={selected} name='role' placeholder='Select role' onChange={handleChange}>
+                                <option value='EMPLOYER'>Employer</option>
+                                <option value='JOB_SEEKER'>Job Seeker</option>
+                            </Select>
+                        </FormControl>
                         <Button colorScheme='green' variant='outline' type='submit'>
                             Submit
                         </Button>
                     </VStack>
-                )}
-            </form>
+                 </form>
+            )}
         </main>
     )
 }
