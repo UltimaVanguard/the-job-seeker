@@ -1,0 +1,62 @@
+[
+  {
+    "companyName": "TechSolutions Inc.",
+    "address": "123 Main Street, Cityville, USA",
+    "phone": "+1-123-456-7890",
+    "email": "info@techsolutions.com"
+  },
+  {
+    "companyName": "InnovateTech Ltd.",
+    "address": "456 Elm Street, Innovation City, USA",
+    "phone": "+1-234-567-8901",
+    "email": "contact@innovatetech.com"
+  },
+  {
+    "companyName": "Global Innovations Co.",
+    "address": "789 Oak Avenue, Global City, USA",
+    "phone": "+1-345-678-9012",
+    "email": "info@globalinnovations.com"
+  },
+  {
+    "companyName": "Digital Dynamics Corp.",
+    "address": "101 Pine Road, Digital Town, USA",
+    "phone": "+1-456-789-0123",
+    "email": "contact@digitaldynamics.com"
+  },
+  {
+    "companyName": "FutureTech Solutions LLC",
+    "address": "321 Cedar Lane, Future City, USA",
+    "phone": "+1-567-890-1234",
+    "email": "info@futuretechsolutions.com"
+  },
+  {
+    "companyName": "Innovative Minds Enterprises",
+    "address": "555 Maple Drive, Innovation Valley, USA",
+    "phone": "+1-678-901-2345",
+    "email": "contact@innovativeminds.com"
+  },
+  {
+    "companyName": "TechGenius Group",
+    "address": "777 Birch Street, Techville, USA",
+    "phone": "+1-789-012-3456",
+    "email": "info@techgeniusgroup.com"
+  },
+  {
+    "companyName": "Digital Innovations Inc.",
+    "address": "888 Willow Avenue, Digital City, USA",
+    "phone": "+1-890-123-4567",
+    "email": "contact@digitalinnovations.com"
+  },
+  {
+    "companyName": "Smart Solutions Enterprises",
+    "address": "999 Oak Lane, Smart Town, USA",
+    "phone": "+1-901-234-5678",
+    "email": "info@smartsolutions.com"
+  },
+  {
+    "companyName": "InnovateX Technologies",
+    "address": "234 Pine Street, Innovation Park, USA",
+    "phone": "+1-012-345-6789",
+    "email": "contact@innovatex.com"
+  }
+]
