@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const applicationSchema = new Schema({
     jobId: {
         type: Schema.Types.ObjectID,
-        ref: 'User',
+        ref: 'Job',
         required: true
     },
     seekerID: {
