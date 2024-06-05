@@ -1,6 +1,8 @@
+import { Text } from '@chakra-ui/react';
+
 const Footer = () => {
     return (
-        <p>Made by Chris, Devunte, Eugene, and Igor</p>
+        <Text fontSize='lg'>Made by Chris, Devunte, Eugene, and Igor</Text>
     )
 }
 
