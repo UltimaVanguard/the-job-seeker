@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client';
 
 import JobForm from '../components/JobForm';
 
-const CreateProfile = () => {
+const AddJob = () => {
     // sets the various states needed
     const [formState, setFormState] = useState({ title: '', description: '', location: '', jobType: '', salaryRange: '', experienceLevel: '' });
     const [selected, setSelected] = useState('');
@@ -48,4 +48,4 @@ const CreateProfile = () => {
     )
 }
 
-export default CreateProfile;
+export default AddJob;

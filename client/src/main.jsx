@@ -7,7 +7,7 @@ import App from './App.jsx';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import CreateProfile from './pages/CreateProfile';
-import JobPosting from './pages/JobPosting';
+import AddJob from './pages/AddJob';
 import ErrorPage from './pages/ErrorPage';
 
 // creates routers to redirect to our pages
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
         element: <CreateProfile />
       }, {
         path: '/newJob',
-        element: <JobPosting />
+        element: <AddJob />
       },
     ]
   },

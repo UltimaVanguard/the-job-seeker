@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // import Auth from '../../utils/auth';
-import { Button} from '@chakra-ui/react';
+import { Heading, Button } from '@chakra-ui/react';
 
 const Header = ({ loginState, setLoginState}) => {
     const logout = (event) => {
@@ -21,7 +21,7 @@ const Header = ({ loginState, setLoginState}) => {
         <header>
             <div>                
                 <Link to='/'>
-                    <h1>JobSeeker</h1>
+                    <Heading size='xl'>JobSeeker</Heading>
                 </Link>
             </div>
             <div>
