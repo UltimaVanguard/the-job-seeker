@@ -3,7 +3,6 @@ import { VStack, Input, Button, InputRightElement, InputGroup, Select,
 
 const LoginForm = ({logState, handleChange, handleLoginSubmit, show, handleClick}) => {
     return (
-
         <form onSubmit={handleLoginSubmit}>
             <VStack spacing={4}>
                 <FormControl>

@@ -1,4 +1,4 @@
-import {useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 // import { QUERY_ME } from '../utils/queries;
@@ -8,7 +8,7 @@ import JobSeekerHome from '../components/JobSeekerHome';
 
 const Home = () => {
     // variable for differentiating between employers and job seekers
-    const employer = true
+    const employer = false
 
     // queries the user
     // const { loading, data } = useQuery(QUERY_ME)
