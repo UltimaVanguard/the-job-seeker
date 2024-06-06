@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-// import { LOGIN_USER, ADD_USER } from '../utils/mutations';
+import { LOGIN_USER, ADD_USER } from '../utils/mutations';
+
+
+import { Heading } from '@chakra-ui/react';
 
 import Auth from '../utils/auth';
 
@@ -11,9 +14,9 @@ const Login = ({ loginState, setLoginState }) => {
     const [logState, setLogState] = useState({ email: '', password: '' });
     const [signupState, setSignupState] = useState({ username: '', email: '', password: '', role: '' });
     const [selected, setSelected] = useState('');
-    const [show, setShow] = useState(false)
-    // const [login, { error, data }] = useMutation(LOGIN_USER);
-    // const [signup, { error, data}] = useMutation(ADD_USER);
+    const [show, setShow] = useState(false);
+    const [login, { lError, lData }] = useMutation(LOGIN_USER);
+    const [createUser, { sError, sData}] = useMutation(ADD_USER);
 
     const handleClick = () => setShow(!show);
 
@@ -42,11 +45,11 @@ const Login = ({ loginState, setLoginState }) => {
         event.preventDefault();
 
         try {
-            const { data } = await login({
+            const { lData } = await login({
                 variables: {...logState},
             })
 
-            Auth.login(data.login.token);
+            Auth.login(lData.login.token);
         } catch (err) {
             console.error(err);
         };
@@ -60,12 +63,14 @@ const Login = ({ loginState, setLoginState }) => {
     const handleSignupSubmit = async (event) => {
         event.preventDefault();
 
+        console.log(signupState)
         try {
-            const { data } = await signup({
+            const { data } = await createUser({
                 variables: {...signupState},
             })
 
-            Auth.signup(data.signup.token);
+            console.log(data)
+            Auth.signup(data.createUser.token);
         } catch (err) {
             console.error(err);
         };
@@ -83,14 +88,14 @@ const Login = ({ loginState, setLoginState }) => {
         <main>
             {loginState ? (
                 <div>
-                    <h2>Login</h2>
+                    <Heading>Login</Heading>
                     <LoginForm logState={logState} handleChange={handleChange}
                      handleLoginSubmit={handleLoginSubmit} show={show} 
                      handleClick={handleClick}/>
                 </div>
             ) : (
                 <div>
-                    <h2>Signup</h2>
+                    <Heading>Signup</Heading>
                     <SignupForm signupState={signupState} handleChange={handleChange}
                      handleSignupSubmit={handleSignupSubmit} selected={selected}
                      show={show} handleClick={handleClick}/>
