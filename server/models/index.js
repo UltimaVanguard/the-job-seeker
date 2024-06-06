@@ -1,7 +1,6 @@
 const Job = require('./Job');
 const User = require('./User');
-const Application = require('./application')
+const application = require('./application');
+const review = require('./review');
 
-
-
-module.exports = {Job, User, Application};
+module.exports = {Job, User, review, application};

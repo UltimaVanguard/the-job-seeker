@@ -1,7 +1,6 @@
-const Job = require("../models/Job");
-const Application = require("../models/Application");
-const Review = require("../models/review");
-const User = require("../models/User");
+const { Job, application, User, review } = require("../models");
+const { signToken, AuthenticationError } = require('../utils/auth')
+
 
 const resolvers = {
  
@@ -93,20 +92,37 @@ const resolvers = {
         throw new Error(`Error creating review: ${error}`);
       }
     },
-    createUser: async (_, { username, email, password, role }) => {
+    createUser: async (parent, { username, email, password, role }) => {
       try {
-        const newUser = new User({
+        const newUser = await User.create({
           username,
           email,
           password,
           role,
         });
-        await newUser.save();
-        return newUser;
+        const token = signToken(newUser);
+        return { token, newUser};
       } catch (err) {
         throw new Error(err);
       }
     },
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw AuthenticationError;
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw AuthenticationError;
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
+    }
   },
 };
 
