@@ -68,7 +68,9 @@ const typeDefs = `
     getUser(id: ID!): User
     getJobPosting(id: ID!): JobPosting
     getApplication(id: ID!): Application
-    getCompanyProfile(id: ID!): CompanyProfile
+    getReviewsByCompany(id: ID!): CompanyProfile
+    getReviewById(id: ID!): Review
+    getReviewsByUser(id: ID!): User
   }
 
   type Mutation {
@@ -77,7 +79,7 @@ const typeDefs = `
     createApplication(jobId: ID!, seekerId: ID!, resume: String!, coverLetter: String!): Application
     createCompanyProfile(employerId: ID!, companyName: String!, companyDescription: String!): CompanyProfile
     updateApplicationStatus(id: ID!, status: String!): Application
-    addReview(userId: ID!, companyId: ID!, rating: Int!, comment: String): Review
+    createReview(userId: ID!, companyId: ID!, rating: Int!, comment: String): Review
   }
 `;
 

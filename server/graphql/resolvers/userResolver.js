@@ -1,6 +1,6 @@
 const User = require('../../models/User');
 const Job = require('../../models/Job');
-const Application = require('../../models/Application');
+const Application = require('../../models/application');
 const CompanyProfile = require('../../models/CompanyProfile');
 const Review = require('../../models/Review');
 
