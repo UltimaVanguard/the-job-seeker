@@ -1,4 +1,4 @@
-import {AuthenticationError, signToken} from './utils/auth.js'
+// import {AuthenticationError, signToken} from './utils/auth.js'
 export const typeDefs =  `#graphql 
 type Query {
     example: String

@@ -1,14 +1,10 @@
-const Job = require("../../models/Job");
-const Application = require("../../models/Application");
-const Review = require("./models/review");
-const User = require("../../models/User");
+const Job = require("../models/Job");
+const Application = require("../models/Application");
+const Review = require("../models/review");
+const User = require("../models/User");
 
 const resolvers = {
-  Job: {
-    applications: async (parent) => {
-      return await Application.find({ jobId: parent.id });
-    },
-  },
+ 
   Query: {
     getJobPosting: async (_, { id }) => {
       try {

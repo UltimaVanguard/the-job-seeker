@@ -1,11 +1,12 @@
 const { mergeResolvers } = require('@graphql-tools/merge');
 const jobResolver = require('./jobResolver');
 const userResolver = require('./userResolver');
+const reviewResolver = require('./reviewResolver')
 
 const resolvers = mergeResolvers([
   jobResolver,
   userResolver,
-  // Add more resolvers here if needed
+  reviewResolver
 ]);
 
 module.exports = resolvers;
