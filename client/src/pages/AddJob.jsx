@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useQuery } from '@apollo/client';
 
+import { Heading } from '@chakra-ui/react';
 // import { QUERY_ME } from '../utils/queries';
 
 import JobForm from '../components/JobForm';
@@ -41,7 +42,7 @@ const AddJob = () => {
 
     return (
         <main>
-            <h2>Create your new job post</h2>
+            <Heading>Create your new job post</Heading>
             <JobForm formState={formState} selected={selected}
              handleChange={handleChange} handleFormSubmit={handleFormSubmit}/>
         </main>

@@ -8,7 +8,7 @@ import JobSeekerHome from '../components/JobSeekerHome';
 
 const Home = () => {
     // variable for differentiating between employers and job seekers
-    const employer = true
+    const employer = false
 
     // queries the user
     // const { loading, data } = useQuery(QUERY_ME)

@@ -1,5 +1,5 @@
 import { VStack, Input, Button,  Select, FormControl, FormLabel, 
-         FormErrorMessage, FormHelperText } from '@chakra-ui/react';
+         FormErrorMessage, FormHelperText, Textarea } from '@chakra-ui/react';
 
 const JobForm = ({ formState, selected, handleChange, handleFormSubmit }) => {
     // initializes error fields
@@ -28,10 +28,11 @@ const JobForm = ({ formState, selected, handleChange, handleFormSubmit }) => {
                 </FormControl>
                 <FormControl isRequired isInvalid={descError}>    
                     <FormLabel>Description:</FormLabel>
-                    <Input
+                    <Textarea
                         name='description'
                         type='text'
                         placeholder='Description'
+                        resize='none'
                         value={formState.description}
                         onChange={handleChange}
                     />
