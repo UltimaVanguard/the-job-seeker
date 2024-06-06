@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 // import { LOGIN_USER, ADD_USER } from '../utils/mutations';
 
-// import Auth from '../utils/auth';
+import Auth from '../utils/auth';
 
 import LoginForm from '../components/LoginForm';
 import SignupForm from '../components/SignupForm'; 
@@ -41,15 +41,15 @@ const Login = ({ loginState, setLoginState }) => {
     const handleLoginSubmit = async (event) => {
         event.preventDefault();
 
-        // try {
-        //     const { data } = await login({
-        //         variables: {...logState},
-        //     })
+        try {
+            const { data } = await login({
+                variables: {...logState},
+            })
 
-        //     Auth.login(data.login.token);
-        // } catch (err) {
-        //     console.error(err);
-        // };
+            Auth.login(data.login.token);
+        } catch (err) {
+            console.error(err);
+        };
 
         setLogState({
             email: '',
@@ -60,15 +60,15 @@ const Login = ({ loginState, setLoginState }) => {
     const handleSignupSubmit = async (event) => {
         event.preventDefault();
 
-        // try {
-        //     const { data } = await signup({
-        //         variables: {...signupState},
-        //     })
+        try {
+            const { data } = await signup({
+                variables: {...signupState},
+            })
 
-        //     Auth.login(data.signup.token);
-        // } catch (err) {
-        //     console.error(err);
-        // };
+            Auth.signup(data.signup.token);
+        } catch (err) {
+            console.error(err);
+        };
 
         setSignupState({
             username: '',
