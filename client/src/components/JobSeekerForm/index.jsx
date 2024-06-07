@@ -5,8 +5,8 @@ const JobSeekerForm = ({jobSeekerState, handleChange, handleJobSeekerSubmit}) =>
     // initializes error fields
     const fNameError = jobSeekerState.fName === '';
     const lNameError = jobSeekerState.lName === '';
-    const jsAddrError = jobSeekerState.lName === ''; 
-    const jsPhoneError = jobSeekerState.lName === '';
+    const jsAddrError = jobSeekerState.address === ''; 
+    const jsPhoneError = jobSeekerState.phone === '';
 
     return (
         <form onSubmit={handleJobSeekerSubmit}>
@@ -50,7 +50,7 @@ const JobSeekerForm = ({jobSeekerState, handleChange, handleJobSeekerSubmit}) =>
                                 value={jobSeekerState.address}
                                 onChange={handleChange}
                             />
-                            {lNameError ? (
+                            {jsAddrError ? (
                                 <FormErrorMessage>Address is required.</FormErrorMessage>
                             ) : (
                                 <FormHelperText>Enter your address.</FormHelperText>

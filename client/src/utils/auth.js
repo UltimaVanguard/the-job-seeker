@@ -12,7 +12,6 @@ class AuthService {
     }
 
     isTokenExpired(token) {
-        console.log(token)
         // decodes token to get expiration date
         const decoded = jwtDecode(token);
         
