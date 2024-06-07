@@ -20,10 +20,38 @@ const userSchema = new Schema({
     enum: ['JOB_SEEKER', 'EMPLOYER'],
     required: true
   },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  }
+  seekerProfile: {
+      fName: {
+        type: String,
+      },
+      lName: {
+        type: String,
+      },
+      address: {
+        type: String,
+      },
+      phone: {
+        type: String,
+      },
+  },
+  employerProfile: {
+    companyName: {
+      type: String,
+    },
+    address: {
+      type: String,
+    },
+    phone: {
+      type: String,
+    },
+    email: {
+      type: String,
+    },
+    industry: {
+      type: String,
+      enum: ['Technology', 'Construction', 'Finance', 'Health']
+    }
+  } 
 });
 
 userSchema.pre('save', async function (next) {

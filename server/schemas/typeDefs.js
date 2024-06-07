@@ -5,12 +5,23 @@ const typeDefs = `
     email: String!
     password: String!
     role: String!
-    profile: Profile
+    seekerProfile: seekerProfile
+    employerProfile: employerProfile
   }
 
-  type Profile {
-    seekerProfile: JobSeekerProfile
-    employerProfile: EmployerProfile
+  type seekerProfile {
+    fName: String
+    lName: String
+    address: String
+    phone: String
+  }
+
+  type employerProfile {
+    companyName: String
+    address: String
+    phone: String
+    email: String
+    industry: String
   }
 
   type JobSeekerProfile {
@@ -35,6 +46,7 @@ const typeDefs = `
     experienceLevel: String!
     createdAt: String!
     updatedAt: String!
+    applications: [Application]
   }
 
   type Application {
@@ -76,11 +88,14 @@ const typeDefs = `
     getReviewsByCompany(id: ID!): CompanyProfile
     getReviewById(id: ID!): Review
     getReviewsByUser(id: ID!): User
+    me: User
   }
 
   type Mutation {
     createUser(username: String!, email: String!, password: String!, role: String!): Auth
     login(email: String!, password: String!): Auth
+    createSeekerProfile(id: ID!, fName: String!, lName: String!, address: String!, phone: String!): User
+    createEmployerProfile(id: ID!, companyName: String!, address: String!, phone: String!, email: String!, industry: String!): User
     createJobPosting(employerId: ID!, title: String!, description: String!, location: String!, jobType: String!, salaryRange: String!, experienceLevel: String!): JobPosting
     createApplication(jobId: ID!, seekerId: ID!, resume: String!, coverLetter: String!): Application
     createCompanyProfile(employerId: ID!, companyName: String!, companyDescription: String!): CompanyProfile

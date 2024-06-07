@@ -43,6 +43,12 @@ const resolvers = {
         throw new Error(err);
       }
     },
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id });
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
   Mutation: {
     createJobPosting: async (
@@ -122,7 +128,37 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
-    }
+    },
+    createSeekerProfile: async (parent, {id, fName, lName, address, phone}) => {
+      const updatedUser = await User.findOneAndUpdate(
+        { _id: id},
+        { 
+          $set: {
+            seekerProfile: { fName: fName, lName: lName, address: address, phone: phone},
+          },
+        },
+        {
+          new: true
+        }
+      );
+      return updatedUser
+      throw AuthenticationError
+    },
+    createEmployerProfile: async (parent, {id, companyName, address, phone, email, industry}) => {
+      const updatedUser = await User.findOneAndUpdate(
+        { _id: id},
+        { 
+          $set: {
+            employerProfile: { companyName: companyName, address: address, phone: phone, email: email, industry: industry},
+          },
+        },
+        {
+          new: true
+        }
+      );
+      return updatedUser
+      throw AuthenticationError
+    },
   },
 };
 
