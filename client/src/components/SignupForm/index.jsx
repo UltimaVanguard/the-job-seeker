@@ -69,7 +69,7 @@ const SignupForm = ({signupState, handleChange, handleSignupSubmit, selected, sh
                         <option value='JOB_SEEKER'>Job Seeker</option>
                     </Select>
                 </FormControl>
-                <Button colorScheme='green' variant='outline' type='submit'>
+                <Button colorScheme='green' type='submit'>
                     Submit
                 </Button>
             </VStack>

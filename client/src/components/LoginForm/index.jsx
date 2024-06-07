@@ -33,7 +33,7 @@ const LoginForm = ({logState, handleChange, handleLoginSubmit, show, handleClick
                         </InputRightElement>
                     </InputGroup>
                 </FormControl>
-                <Button colorScheme='green' variant='outline' type='submit'>
+                <Button colorScheme='green' type='submit'>
                     Submit
                 </Button>
             </VStack>
