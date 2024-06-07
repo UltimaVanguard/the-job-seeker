@@ -5,6 +5,12 @@ const { signToken, AuthenticationError } = require('../utils/auth')
 const resolvers = {
  
   Query: {
+    getJobs: async () => {
+      return Job.find();
+    },
+    getCompanyJobs: async (parent, { employerId }) => {
+      return Job.find({ employerId: employerId});
+    },
     getJobPosting: async (_, { id }) => {
       try {
         return await Job.findById(id);
@@ -64,7 +70,7 @@ const resolvers = {
       }
     ) => {
       try {
-        const newJob = new Job({
+        const job = await Job.create({
           employerId,
           title,
           description,
@@ -74,8 +80,7 @@ const resolvers = {
           experienceLevel,
           createdAt: new Date().toISOString(),
         });
-        await newJob.save();
-        return newJob;
+        return job;
       } catch (err) {
         throw new Error(err);
       }

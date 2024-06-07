@@ -1,40 +1,51 @@
 import { useQuery } from '@apollo/client';
+import { Link } from 'react-router-dom';
 
-// import { QUERY_COMPANY_JOB } from '../../utils/queries';
+import { QUERY_COMPANY_JOBS } from '../../utils/queries';
 
 import { HStack, Card, CardHeader, CardBody, CardFooter, Text,
-         Heading, Wrap, WrapItem, SimpleGrid, Box} from '@chakra-ui/react';
+         Heading, Wrap, WrapItem, SimpleGrid, Box, Button} from '@chakra-ui/react';
 
-const EmployerHome = (id) => {
+const EmployerHome = (employerId) => {
     const names = ['John Doe', 'Jane Doe', 'Joe Schmoe', 'John John', 'Jimmy John', 'Jacob Doomer', 'Cool Guy', 'Tom Tom']
 
-    // const { loading, data } = useQuery(QUERY_COMPANY_JOB, {
-    //     variables: { employerId: id }
-    // })
+    const { loading, data } = useQuery(QUERY_COMPANY_JOBS, {
+        variables: { employerId: employerId.id }
+    })
 
-    // const jobs = data?.jobs || []
+    const jobs = data?.getCompanyJobs || []
 
-    // if (!jobs.length) {
-    //     return <h3>No jobs posted yet!</h3>
-    // }
+    if (loading) {
+        return <div>Loading...</div>;
+    } 
+
+    if (!jobs.length) {
+        return (
+            <Box>
+                <Heading>No jobs posted yet!</Heading>
+                <Button className="job-button" colorScheme='green'><Link to="/newJob">Post new job</Link></Button>
+            </Box>
+        ) 
+    }
 
     return (
         <Box>
-            <Heading className='home-heading'>Current Job Postings</Heading>
-            {/* <SimpleGrid columns={4} spacing={10}>
+            <Heading className='home-heading'>Your Posted Jobs</Heading>
+            <Button className="job-button" colorScheme='green'><Link to="/newJob">Post new job</Link></Button>
+            <SimpleGrid columns={4} spacing={10}>
                 {jobs &&
                     jobs.map((job) => (
-                        <Card className='card>
+                        <Card key={job.id} className='card'>
                             <CardHeader>
-                                <Heading>{job.title}</Heading>
+                                <Heading size='md'>{job.title}</Heading>
                             </CardHeader>
                             <CardBody>
-                                <Text>Description: {job.description}</Text>
                                 <Text>Location: {job.location}</Text>
-                                <Text>Salary: {job.Salary}</Text>
+                                <Text>Salary: ${job.salaryRange}</Text>
+                                <Text>Job Type: {job.jobType}</Text>
                             </CardBody>
                             <CardFooter>
-                                <HStack>
+                                {/* <HStack>
                                     {job.applications.map((application) => (
                                         <Wrap spacing={3}>
                                             <WrapItem>
@@ -44,387 +55,11 @@ const EmployerHome = (id) => {
                                             </WrapItem>
                                         </Wrap>
                                     ))}
-                                </HStack>
+                                </HStack> */}
                             </CardFooter>
                         </Card>
                     )
                 )}
-            </SimpleGrid> */}
-            <SimpleGrid className='grid' minChildWidth='400px' spacing={10}>
-                <Card maxW='md' colorScheme='red'>
-                    <CardHeader>
-                        <Heading size='lg'>Software Engineer</Heading>
-                    </CardHeader>
-                    <CardBody>
-                        <Text>Full Stack Software Engineer to lead projects</Text>
-                        <Text>Salary: $80,0000/yr</Text>
-                    </CardBody>
-                    <CardFooter>
-                        <HStack>
-                            {names.map((name) => (
-                                <Wrap spacing={3}>
-                                    <WrapItem>
-                                        <Card>
-                                            <Text>{name}</Text>
-                                        </Card>
-                                    </WrapItem>
-                                </Wrap>
-                            ))}
-                        </HStack>
-                    </CardFooter>
-                </Card>
-                <Card maxW='md'>
-                    <CardHeader>
-                        <Heading size='lg'>Software Engineer</Heading>
-                    </CardHeader>
-                    <CardBody>
-                        <Text>Full Stack Software Engineer to lead projects</Text>
-                        <Text>$80,0000/yr</Text>
-                    </CardBody>
-                    <CardFooter>
-                        <HStack>
-                            {names.map((name) => (
-                                <Wrap spacing={3}>
-                                    <WrapItem>
-                                        <Card>
-                                            <Text>{name}</Text>
-                                        </Card>
-                                    </WrapItem>
-                                </Wrap>
-                            ))}
-                        </HStack>
-                    </CardFooter>
-                </Card>
-                <Card maxW='md'>
-                    <CardHeader>
-                        <Heading size='lg'>Software Engineer</Heading>
-                    </CardHeader>
-                    <CardBody>
-                        <Text>Full Stack Software Engineer to lead projects</Text>
-                        <Text>$80,0000/yr</Text>
-                    </CardBody>
-                    <CardFooter>
-                        <HStack>
-                            {names.map((name) => (
-                                <Wrap spacing={3}>
-                                    <WrapItem>
-                                        <Card>
-                                            <Text>{name}</Text>
-                                        </Card>
-                                    </WrapItem>
-                                </Wrap>
-                            ))}
-                        </HStack>
-                    </CardFooter>
-                </Card>
-                <Card maxW='md'>
-                    <CardHeader>
-                        <Heading size='lg'>Software Engineer</Heading>
-                    </CardHeader>
-                    <CardBody>
-                        <Text>Full Stack Software Engineer to lead projects</Text>
-                        <Text>$80,0000/yr</Text>
-                    </CardBody>
-                    <CardFooter>
-                        <HStack>
-                            {names.map((name) => (
-                                <Wrap spacing={3}>
-                                    <WrapItem>
-                                        <Card>
-                                            <Text>{name}</Text>
-                                        </Card>
-                                    </WrapItem>
-                                </Wrap>
-                            ))}
-                        </HStack>
-                    </CardFooter>
-                </Card>
-                <Card maxW='md'>
-                    <CardHeader>
-                        <Heading size='lg'>Software Engineer</Heading>
-                    </CardHeader>
-                    <CardBody>
-                        <Text>Full Stack Software Engineer to lead projects</Text>
-                        <Text>$80,0000/yr</Text>
-                    </CardBody>
-                    <CardFooter>
-                        <HStack>
-                            {names.map((name) => (
-                                <Wrap spacing={3}>
-                                    <WrapItem>
-                                        <Card>
-                                            <Text>{name}</Text>
-                                        </Card>
-                                    </WrapItem>
-                                </Wrap>
-                            ))}
-                        </HStack>
-                    </CardFooter>
-                </Card>
-                <Card maxW='md'>
-                    <CardHeader>
-                        <Heading size='lg'>Software Engineer</Heading>
-                    </CardHeader>
-                    <CardBody>
-                        <Text>Full Stack Software Engineer to lead projects</Text>
-                        <Text>$80,0000/yr</Text>
-                    </CardBody>
-                    <CardFooter>
-                        <HStack>
-                            {names.map((name) => (
-                                <Wrap spacing={3}>
-                                    <WrapItem>
-                                        <Card>
-                                            <Text>{name}</Text>
-                                        </Card>
-                                    </WrapItem>
-                                </Wrap>
-                            ))}
-                        </HStack>
-                    </CardFooter>
-                </Card>
-                <Card maxW='md'>
-                    <CardHeader>
-                        <Heading size='lg'>Software Engineer</Heading>
-                    </CardHeader>
-                    <CardBody>
-                        <Text>Full Stack Software Engineer to lead projects</Text>
-                        <Text>$80,0000/yr</Text>
-                    </CardBody>
-                    <CardFooter>
-                        <HStack>
-                            {names.map((name) => (
-                                <Wrap spacing={3}>
-                                    <WrapItem>
-                                        <Card>
-                                            <Text>{name}</Text>
-                                        </Card>
-                                    </WrapItem>
-                                </Wrap>
-                            ))}
-                        </HStack>
-                    </CardFooter>
-                </Card>
-                <Card maxW='md'>
-                    <CardHeader>
-                        <Heading size='lg'>Software Engineer</Heading>
-                    </CardHeader>
-                    <CardBody>
-                        <Text>Full Stack Software Engineer to lead projects</Text>
-                        <Text>$80,0000/yr</Text>
-                    </CardBody>
-                    <CardFooter>
-                        <HStack>
-                            {names.map((name) => (
-                                <Wrap spacing={3}>
-                                    <WrapItem>
-                                        <Card>
-                                            <Text>{name}</Text>
-                                        </Card>
-                                    </WrapItem>
-                                </Wrap>
-                            ))}
-                        </HStack>
-                    </CardFooter>
-                </Card>
-                <Card maxW='md'>
-                    <CardHeader>
-                        <Heading size='lg'>Software Engineer</Heading>
-                    </CardHeader>
-                    <CardBody>
-                        <Text>Full Stack Software Engineer to lead projects</Text>
-                        <Text>$80,0000/yr</Text>
-                    </CardBody>
-                    <CardFooter>
-                        <HStack>
-                            {names.map((name) => (
-                                <Wrap spacing={3}>
-                                    <WrapItem>
-                                        <Card>
-                                            <Text>{name}</Text>
-                                        </Card>
-                                    </WrapItem>
-                                </Wrap>
-                            ))}
-                        </HStack>
-                    </CardFooter>
-                </Card>
-                <Card maxW='md'>
-                    <CardHeader>
-                        <Heading size='lg'>Software Engineer</Heading>
-                    </CardHeader>
-                    <CardBody>
-                        <Text>Full Stack Software Engineer to lead projects</Text>
-                        <Text>$80,0000/yr</Text>
-                    </CardBody>
-                    <CardFooter>
-                        <HStack>
-                            {names.map((name) => (
-                                <Wrap spacing={3}>
-                                    <WrapItem>
-                                        <Card>
-                                            <Text>{name}</Text>
-                                        </Card>
-                                    </WrapItem>
-                                </Wrap>
-                            ))}
-                        </HStack>
-                    </CardFooter>
-                </Card>
-                <Card maxW='md'>
-                    <CardHeader>
-                        <Heading size='lg'>Software Engineer</Heading>
-                    </CardHeader>
-                    <CardBody>
-                        <Text>Full Stack Software Engineer to lead projects</Text>
-                        <Text>$80,0000/yr</Text>
-                    </CardBody>
-                    <CardFooter>
-                        <HStack>
-                            {names.map((name) => (
-                                <Wrap spacing={3}>
-                                    <WrapItem>
-                                        <Card>
-                                            <Text>{name}</Text>
-                                        </Card>
-                                    </WrapItem>
-                                </Wrap>
-                            ))}
-                        </HStack>
-                    </CardFooter>
-                </Card>
-                <Card maxW='md'>
-                    <CardHeader>
-                        <Heading size='lg'>Software Engineer</Heading>
-                    </CardHeader>
-                    <CardBody>
-                        <Text>Full Stack Software Engineer to lead projects</Text>
-                        <Text>$80,0000/yr</Text>
-                    </CardBody>
-                    <CardFooter>
-                        <HStack>
-                            {names.map((name) => (
-                                <Wrap spacing={3}>
-                                    <WrapItem>
-                                        <Card>
-                                            <Text>{name}</Text>
-                                        </Card>
-                                    </WrapItem>
-                                </Wrap>
-                            ))}
-                        </HStack>
-                    </CardFooter>
-                </Card>
-                <Card maxW='md'>
-                    <CardHeader>
-                        <Heading size='lg'>Software Engineer</Heading>
-                    </CardHeader>
-                    <CardBody>
-                        <Text>Full Stack Software Engineer to lead projects</Text>
-                        <Text>$80,0000/yr</Text>
-                    </CardBody>
-                    <CardFooter>
-                        <HStack>
-                            {names.map((name) => (
-                                <Wrap spacing={3}>
-                                    <WrapItem>
-                                        <Card>
-                                            <Text>{name}</Text>
-                                        </Card>
-                                    </WrapItem>
-                                </Wrap>
-                            ))}
-                        </HStack>
-                    </CardFooter>
-                </Card>
-                <Card maxW='md'>
-                    <CardHeader>
-                        <Heading size='lg'>Software Engineer</Heading>
-                    </CardHeader>
-                    <CardBody>
-                        <Text>Full Stack Software Engineer to lead projects</Text>
-                        <Text>$80,0000/yr</Text>
-                    </CardBody>
-                    <CardFooter>
-                        <HStack>
-                            {names.map((name) => (
-                                <Wrap spacing={3}>
-                                    <WrapItem>
-                                        <Card>
-                                            <Text>{name}</Text>
-                                        </Card>
-                                    </WrapItem>
-                                </Wrap>
-                            ))}
-                        </HStack>
-                    </CardFooter>
-                </Card>
-                <Card maxW='md'>
-                    <CardHeader>
-                        <Heading size='lg'>Software Engineer</Heading>
-                    </CardHeader>
-                    <CardBody>
-                        <Text>Full Stack Software Engineer to lead projects</Text>
-                        <Text>$80,0000/yr</Text>
-                    </CardBody>
-                    <CardFooter>
-                        <HStack>
-                            {names.map((name) => (
-                                <Wrap spacing={3}>
-                                    <WrapItem>
-                                        <Card>
-                                            <Text>{name}</Text>
-                                        </Card>
-                                    </WrapItem>
-                                </Wrap>
-                            ))}
-                        </HStack>
-                    </CardFooter>
-                </Card>
-                <Card maxW='md'>
-                    <CardHeader>
-                        <Heading size='lg'>Software Engineer</Heading>
-                    </CardHeader>
-                    <CardBody>
-                        <Text>Full Stack Software Engineer to lead projects</Text>
-                        <Text>$80,0000/yr</Text>
-                    </CardBody>
-                    <CardFooter>
-                        <HStack>
-                            {names.map((name) => (
-                                <Wrap spacing={3}>
-                                    <WrapItem>
-                                        <Card>
-                                            <Text>{name}</Text>
-                                        </Card>
-                                    </WrapItem>
-                                </Wrap>
-                            ))}
-                        </HStack>
-                    </CardFooter>
-                </Card>
-                <Card maxW='md'>
-                    <CardHeader>
-                        <Heading size='lg'>Software Engineer</Heading>
-                    </CardHeader>
-                    <CardBody>
-                        <Text>Full Stack Software Engineer to lead projects</Text>
-                        <Text>$80,0000/yr</Text>
-                    </CardBody>
-                    <CardFooter>
-                        <HStack>
-                            {names.map((name) => (
-                                <Wrap spacing={3}>
-                                    <WrapItem>
-                                        <Card>
-                                            <Text>{name}</Text>
-                                        </Card>
-                                    </WrapItem>
-                                </Wrap>
-                            ))}
-                        </HStack>
-                    </CardFooter>
-                </Card>
             </SimpleGrid>
         </Box>
     )

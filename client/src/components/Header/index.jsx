@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
-import { Heading, Button, Flex, Box, Spacer } from '@chakra-ui/react';
+import { Heading, Button, Flex, Box, Spacer, ButtonGroup } from '@chakra-ui/react';
 
 const Header = ({ loginState, setLoginState}) => {
     const logout = (event) => {
@@ -27,24 +27,29 @@ const Header = ({ loginState, setLoginState}) => {
                 </Box>
                 <Spacer />
                 <Box>
+                    {/* if they're logged in, changes what is accessible on the header */}
                     {Auth.loggedIn() ? (
                         <>
-                            <Link to='/me'>
-                                My Profile
-                            </Link>
-                            <Button colorScheme='red' variant='outline' onClick={logout}>
-                                Logout
-                            </Button>
+                            <ButtonGroup>
+                                <Button colorScheme='blue'>
+                                <Link to='/me'>
+                                    My Profile
+                                </Link>
+                                </Button>
+                                <Button colorScheme='red' onClick={logout}>
+                                    Logout
+                                </Button>
+                            </ButtonGroup>
                         </>
                     ) : (
                         <>
                             {/* Changes button text to Signup/Login */}
                             {loginState ? (
-                                <Button colorScheme='blue' variant='outline' onClick={handleClick}>
+                                <Button colorScheme='blue' onClick={handleClick}>
                                     Signup
                                 </Button>
                             ) : (
-                                <Button colorScheme='blue' variant='outline' onClick={handleClick}>
+                                <Button colorScheme='blue' onClick={handleClick}>
                                     Login
                                 </Button>
                             )}
