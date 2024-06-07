@@ -50,6 +50,7 @@ const client = new ApolloClient({
 
 function App() {
   const [loginState, setLoginState] = useState(true);
+  
   return (
     <ApolloProvider client={client}>
       <ChakraProvider>

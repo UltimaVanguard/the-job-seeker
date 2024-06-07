@@ -64,6 +64,11 @@ const typeDefs = `
     createdAt: String!
   }
 
+  type Auth {
+    token: ID!
+    user: User
+  }
+
   type Query {
     getUser(id: ID!): User
     getJobPosting(id: ID!): JobPosting
@@ -74,7 +79,8 @@ const typeDefs = `
   }
 
   type Mutation {
-    createUser(username: String!, email: String!, password: String!, role: String!): User
+    createUser(username: String!, email: String!, password: String!, role: String!): Auth
+    login(email: String!, password: String!): Auth
     createJobPosting(employerId: ID!, title: String!, description: String!, location: String!, jobType: String!, salaryRange: String!, experienceLevel: String!): JobPosting
     createApplication(jobId: ID!, seekerId: ID!, resume: String!, coverLetter: String!): Application
     createCompanyProfile(employerId: ID!, companyName: String!, companyDescription: String!): CompanyProfile
