@@ -1,42 +1,62 @@
 [
   {
-    "username": "SapphireDragon",
-    "email": "sapphiredragon123@example.com"
+    "username": "TechWizard314",
+    "email": "techwizard314@example.com",
+    "password": "hashed_password1", 
+    "role": "JOB_SEEKER"
   },
   {
-    "username": "TechNinja23",
-    "email": "techninja23@example.com"
+    "username": "CodeNinja888",
+    "email": "codeninja888@example.com",
+    "password": "hashed_password2",
+    "role": "EMPLOYER"
   },
   {
-    "username": "MoonlightDreamer",
-    "email": "moonlightdreamer456@example.com"
+    "username": "PixelArtisan42",
+    "email": "pixelartisan42@example.com",
+    "password": "hashed_password3",
+    "role": "JOB_SEEKER"
   },
   {
-    "username": "CodeMaster88",
-    "email": "codemaster88@example.com"
+    "username": "DataGuru2024",
+    "email": "dataguru2024@example.com",
+    "password": "hashed_password4",
+    "role": "EMPLOYER"
   },
   {
-    "username": "StarGazer21",
-    "email": "stargazer21@example.com"
+    "username": "QuantumQuill",
+    "email": "quantumquill@example.com",
+    "password": "hashed_password5",
+    "role": "JOB_SEEKER"
   },
   {
-    "username": "PixelPirate",
-    "email": "pixelpirate789@example.com"
+    "username": "CyberChef99",
+    "email": "cyberchef99@example.com",
+    "password": "hashed_password6",
+    "role": "JOB_SEEKER"
   },
   {
-    "username": "CyberWarrior",
-    "email": "cyberwarrior007@example.com"
+    "username": "NebulaNavigator",
+    "email": "nebula.navigator@example.com", 
+    "password": "hashed_password7",
+    "role": "JOB_SEEKER"
   },
   {
-    "username": "SkyHighTech",
-    "email": "skyhightech42@example.com"
+    "username": "AlgorithmAce",
+    "email": "algorithm.ace@example.com",  
+    "password": "hashed_password8",
+    "role": "EMPLOYER"
   },
   {
-    "username": "DataDiva",
-    "email": "datadiva2021@example.com"
+    "username": "ByteBard",
+    "email": "byte.bard@example.com",    
+    "password": "hashed_password9",
+    "role": "JOB_SEEKER"
   },
   {
-    "username": "CodeCrusader",
-    "email": "codecrusader55@example.com"
+    "username": "SiliconSiren",
+    "email": "silicon.siren@example.com",
+    "password": "hashed_password10",
+    "role": "EMPLOYER"
   }
 ]
