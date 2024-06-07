@@ -83,6 +83,8 @@ const typeDefs = `
 
   type Query {
     getUser(id: ID!): User
+    getJobs: [JobPosting]
+    getCompanyJobs(employerId: ID!): [JobPosting]
     getJobPosting(id: ID!): JobPosting
     getApplication(id: ID!): Application
     getReviewsByCompany(id: ID!): CompanyProfile

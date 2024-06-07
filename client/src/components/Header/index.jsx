@@ -27,6 +27,7 @@ const Header = ({ loginState, setLoginState}) => {
                 </Box>
                 <Spacer />
                 <Box>
+                    {/* if they're logged in, changes what is accessible on the header */}
                     {Auth.loggedIn() ? (
                         <>
                             <Link to='/me'>

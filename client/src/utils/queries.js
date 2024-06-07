@@ -23,3 +23,27 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_ALL_JOBS = gql`
+  query Query {
+    getJobs {
+      id
+      title
+      salaryRange
+      location
+      jobType
+    }
+  }
+`;
+
+export const QUERY_COMPANY_JOBS = gql`
+  query Query($employerId: ID!) {
+    getCompanyJobs(employerId: $employerId) {
+      id
+      title
+      salaryRange
+      location
+      jobType
+    }
+  }
+`;

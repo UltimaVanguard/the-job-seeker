@@ -53,3 +53,18 @@ export const NEW_EMPLOYER_PROFILE = gql`
   }
 `;
 
+export const NEW_JOB_POST = gql`
+  mutation Mutation($id: ID!, $title: String!, $description: String!, $location: String!, $jobType: String!, $salaryRange: String!, $experienceLevel: String!) {
+    createJobPosting(employerId: $id, title: $title, description: $description, location: $location, jobType: $jobType, salaryRange: $salaryRange, experienceLevel: $experienceLevel) {
+      employerId
+      title
+      description
+      location
+      jobType
+      salaryRange
+      experienceLevel
+      id
+    }
+  }
+`;
+
