@@ -45,11 +45,12 @@ const Login = ({ loginState, setLoginState }) => {
         event.preventDefault();
 
         try {
-            const { lData } = await login({
+            const { data } = await login({
                 variables: {...logState},
             })
 
-            Auth.login(lData.login.token);
+            console.log(data.login.token)
+            Auth.login(data.login.token);
         } catch (err) {
             console.error(err);
         };

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-// import Auth from '../../utils/auth';
+import Auth from '../../utils/auth';
 import { Heading, Button, Flex, Box, Spacer } from '@chakra-ui/react';
 
 const Header = ({ loginState, setLoginState}) => {
@@ -27,16 +27,16 @@ const Header = ({ loginState, setLoginState}) => {
                 </Box>
                 <Spacer />
                 <Box>
-                    {/* {Auth.loggedIn() ? ( */}
-                        {/* <>
+                    {Auth.loggedIn() ? (
+                        <>
                             <Link to='/me'>
                                 My Profile
                             </Link>
                             <Button colorScheme='red' variant='outline' onClick={logout}>
                                 Logout
                             </Button>
-                        </> */}
-                    {/* ) : ( */}
+                        </>
+                    ) : (
                         <>
                             {/* Changes button text to Signup/Login */}
                             {loginState ? (
@@ -49,7 +49,7 @@ const Header = ({ loginState, setLoginState}) => {
                                 </Button>
                             )}
                         </>
-                    {/* )} */}
+                    )}
                 </Box>
             </Flex>
         </header>

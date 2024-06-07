@@ -94,14 +94,14 @@ const resolvers = {
     },
     createUser: async (parent, { username, email, password, role }) => {
       try {
-        const newUser = await User.create({
+        const user = await User.create({
           username,
           email,
           password,
           role,
         });
-        const token = signToken(newUser);
-        return { token, newUser};
+        const token = signToken(user);
+        return { token, user};
       } catch (err) {
         throw new Error(err);
       }
