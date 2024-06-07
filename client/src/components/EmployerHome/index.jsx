@@ -9,12 +9,10 @@ import { HStack, Card, CardHeader, CardBody, CardFooter, Text,
 const EmployerHome = (employerId) => {
     const names = ['John Doe', 'Jane Doe', 'Joe Schmoe', 'John John', 'Jimmy John', 'Jacob Doomer', 'Cool Guy', 'Tom Tom']
 
-    console.log(employerId)
     const { loading, data } = useQuery(QUERY_COMPANY_JOBS, {
         variables: { employerId: employerId.id }
     })
 
-    console.log(data)
     const jobs = data?.getCompanyJobs || []
 
     if (loading) {
@@ -37,7 +35,7 @@ const EmployerHome = (employerId) => {
             <SimpleGrid columns={4} spacing={10}>
                 {jobs &&
                     jobs.map((job) => (
-                        <Card className='card'>
+                        <Card key={job.id} className='card'>
                             <CardHeader>
                                 <Heading size='md'>{job.title}</Heading>
                             </CardHeader>
