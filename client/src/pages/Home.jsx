@@ -1,6 +1,7 @@
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 
-import { QUERY_ME, QUERY_ALL_JOBS, QUERY_COMPANY_JOBS } from '../utils/queries';
+import { QUERY_ME } from '../utils/queries';
+import { ADD_APPLICATION } from '../utils/mutations';
 
 import EmployerHome from '../components/EmployerHome';
 import JobSeekerHome from '../components/JobSeekerHome';
@@ -11,6 +12,7 @@ const Home = () => {
 
     // queries the user
     const { loading, data } = useQuery(QUERY_ME)
+
     const user = data?.me
 
     if (loading) {
@@ -27,7 +29,7 @@ const Home = () => {
             {employer ? (
                 <EmployerHome id={user.id}/>
             ) : (
-                <JobSeekerHome />
+                <JobSeekerHome id={user.id}/>
             )}
         </main>
     )

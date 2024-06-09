@@ -1,14 +1,12 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_USER = gql`
-  query user($username: String!) {
-    user(username: $username) {
-      _id
-      profile {
-        JobSeekerProfile {
-            fname
-            lname
-        }
+  query getUser($id: ID!) {
+    getUser(id: $id) {
+      id
+      seekerProfile {
+        fName
+        lName
       }
     }
   }
@@ -44,6 +42,11 @@ export const QUERY_COMPANY_JOBS = gql`
       salaryRange
       location
       jobType
+      applications {
+        seekerId
+        fName
+        lName
+      }
     }
   }
 `;

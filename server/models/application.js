@@ -6,24 +6,16 @@ const applicationSchema = new Schema({
         ref: 'Job',
         required: true
     },
-    seekerID: {
+    seekerId: {
         type: Schema.Types.ObjectID,
         ref: 'User',
         required: true
     },
-    resume: {
-        type: String,
-        requied: true
-    },
-    coverLetter: {
+    fName: {
         type: String,
         required: true
     },
-    status: {
-        type: String,
-        requied: true
-    },
-    createdAt:{
+    lName: {
         type: String,
         required: true
     }

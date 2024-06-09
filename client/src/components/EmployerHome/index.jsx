@@ -15,6 +15,7 @@ const EmployerHome = (employerId) => {
 
     const jobs = data?.getCompanyJobs || []
 
+    console.log(jobs)
     if (loading) {
         return <div>Loading...</div>;
     } 
@@ -45,17 +46,15 @@ const EmployerHome = (employerId) => {
                                 <Text>Job Type: {job.jobType}</Text>
                             </CardBody>
                             <CardFooter>
-                                {/* <HStack>
+                                <SimpleGrid columns={4} spacing={10}>
                                     {job.applications.map((application) => (
-                                        <Wrap spacing={3}>
-                                            <WrapItem>
-                                                <Card>
-                                                    <Text>{application.seekerId}</Text>
-                                                </Card>
-                                            </WrapItem>
-                                        </Wrap>
+                                        <Card key={application.seekerId}>
+                                            <Link to={`/profile/${application.seekerId}`}>
+                                                <Text>{application.fName} {application.lName}</Text>
+                                            </Link>
+                                        </Card>
                                     ))}
-                                </HStack> */}
+                                </SimpleGrid>
                             </CardFooter>
                         </Card>
                     )
