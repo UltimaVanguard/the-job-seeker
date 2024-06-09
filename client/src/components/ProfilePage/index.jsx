@@ -1,7 +1,11 @@
-const ProfilePages = () => {
+import { Heading } from "@chakra-ui/react";
+
+const ProfilePage = () => {
     return (
-        <p>This is the profile page</p>
+        <main>
+            <Heading className="home-heading">This is the profile page</Heading>
+        </main>
     )
 }
 
-export default ProfilePages;
+export default ProfilePage;

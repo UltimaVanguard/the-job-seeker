@@ -68,3 +68,14 @@ export const NEW_JOB_POST = gql`
   }
 `;
 
+export const ADD_APPLICATION = gql`
+  mutation createApplication($jobId: ID!, $seekerId: ID!, $fName: String!, $lName: String!) {
+    createApplication(jobId: $jobId, seekerId: $seekerId, fName: $fName, lName: $lName) {
+      employerId
+      applications {
+        fName
+        lName
+      }
+    }
+  }
+`;

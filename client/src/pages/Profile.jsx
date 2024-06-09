@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import ProfilePages from '../components/ProfilePage';
+import ProfilePage from '../components/ProfilePage';
 
 // import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
@@ -20,7 +20,7 @@ const Profile = () => {
 
     return (
         <>
-            <ProfilePages />
+            <ProfilePage />
         </>
     )
 }
