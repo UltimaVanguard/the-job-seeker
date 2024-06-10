@@ -3,60 +3,124 @@
     "username": "TechWizard314",
     "email": "techwizard314@example.com",
     "password": "hashed_password1", 
-    "role": "JOB_SEEKER"
+    "role": "JOB_SEEKER",
+    "seekerProfile": {
+      "fName": "John",
+      "lName": "Doe",
+      "address": "123 Cranberry Ln",
+      "phone": "2348765000" 
+    }
   },
   {
     "username": "CodeNinja888",
     "email": "codeninja888@example.com",
     "password": "hashed_password2",
-    "role": "EMPLOYER"
+    "role": "EMPLOYER",
+    "employerProfile": {
+      "companyName": "Coding Ninjas Inc.",
+      "address": "123 Code Ln",
+      "phone": "2348765231",
+      "email": "CNinjas@example.com",
+      "industry": "Technology"
+    }
   },
   {
     "username": "PixelArtisan42",
     "email": "pixelartisan42@example.com",
     "password": "hashed_password3",
-    "role": "JOB_SEEKER"
+    "role": "JOB_SEEKER",
+    "seekerProfile": {
+      "fName": "Jane",
+      "lName": "Doe",
+      "address": "123 Mulberry Ln",
+      "phone": "2348765456" 
+    }
   },
   {
     "username": "DataGuru2024",
     "email": "dataguru2024@example.com",
     "password": "hashed_password4",
-    "role": "EMPLOYER"
+    "role": "EMPLOYER",
+    "employerProfile": {
+      "companyName": "Data Inc.",
+      "address": "123 Data Ln",
+      "phone": "2348765456",
+      "email": "BigData@example.com",
+      "industry": "Finance"
+    }
   },
   {
     "username": "QuantumQuill",
     "email": "quantumquill@example.com",
     "password": "hashed_password5",
-    "role": "JOB_SEEKER"
+    "role": "JOB_SEEKER",
+    "seekerProfile": {
+      "fName": "Jim",
+      "lName": "Doley",
+      "address": "123 Crimson Ln",
+      "phone": "2348765233" 
+    }
   },
   {
     "username": "CyberChef99",
     "email": "cyberchef99@example.com",
     "password": "hashed_password6",
-    "role": "JOB_SEEKER"
+    "role": "JOB_SEEKER",
+    "seekerProfile": {
+      "fName": "Cathy",
+      "lName": "Hill",
+      "address": "123 Hill Ln",
+      "phone": "2348765543" 
+    }
   },
   {
     "username": "NebulaNavigator",
     "email": "nebula.navigator@example.com", 
     "password": "hashed_password7",
-    "role": "JOB_SEEKER"
+    "role": "JOB_SEEKER",
+    "seekerProfile": {
+      "fName": "Mike",
+      "lName": "Jones",
+      "address": "123 Wilbur Ln",
+      "phone": "2348765432" 
+    }
   },
   {
     "username": "AlgorithmAce",
     "email": "algorithm.ace@example.com",  
     "password": "hashed_password8",
-    "role": "EMPLOYER"
+    "role": "EMPLOYER",
+    "employerProfile": {
+      "companyName": "Algorithms Inc.",
+      "address": "123 Algorithm Ln",
+      "phone": "2348765987",
+      "email": "AlgortihmInc@example.com",
+      "industry": "Health"
+    }
   },
   {
     "username": "ByteBard",
     "email": "byte.bard@example.com",    
     "password": "hashed_password9",
-    "role": "JOB_SEEKER"
+    "role": "JOB_SEEKER",
+    "seekerProfile": {
+      "fName": "Hannah",
+      "lName": "Duncan",
+      "address": "123 William Ln",
+      "phone": "2348765975" 
+    }
   },
   {
     "username": "SiliconSiren",
     "email": "silicon.siren@example.com",
     "password": "hashed_password10",
-    "role": "EMPLOYER"
+    "role": "EMPLOYER",
+    "employerProfile": {
+      "companyName": "Silicon Construction",
+      "address": "123 Construction Ln",
+      "phone": "2348765543",
+      "email": "SilCon@example.com",
+      "industry": "Construction"
+    }
   }
 ]
