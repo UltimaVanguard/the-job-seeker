@@ -3,6 +3,12 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
+    getJobs: async () => {
+      return Job.find();
+    },
+    getCompanyJobs: async (parent, { employerId }) => {
+      return Job.find({ employerId: employerId});
+    },
     getJobPosting: async (_, { id }) => {
       try {
         return await Job.findById(id);
