@@ -192,6 +192,21 @@ const resolvers = {
         throw new Error(err);
       }
     },
+    createApplication: async (parent, { jobId, seekerId, fName, lName }) => {
+      const updatedJob = await Job.findOneAndUpdate(
+        { _id: jobId },
+        {
+          $addToSet: { 
+            applications: { seekerId: seekerId, fName: fName, lName: lName }  
+          }
+        },
+        {
+          new: true
+        },
+      );
+
+      return updatedJob;
+    }
   },
 };
 
