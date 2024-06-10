@@ -50,13 +50,11 @@ const typeDefs = `
   }
 
   type Application {
-    id: ID!
-    jobId: ID!
-    seekerId: ID!
-    resume: String!
-    coverLetter: String!
-    status: String!
-    createdAt: String!
+    id: ID
+    jobId: ID
+    seekerId: ID
+    fName: String
+    lName: String
   }
 
   type CompanyProfile {
@@ -83,6 +81,8 @@ const typeDefs = `
 
   type Query {
     getUser(id: ID!): User
+    getJobs: [JobPosting]
+    getCompanyJobs(employerId: ID!): [JobPosting]
     getJobPosting(id: ID!): JobPosting
     getApplication(id: ID!): Application
     getReviewsByCompany(companyId: ID!): [Review]
@@ -97,7 +97,7 @@ const typeDefs = `
     createSeekerProfile(id: ID!, fName: String!, lName: String!, address: String!, phone: String!): User
     createEmployerProfile(id: ID!, companyName: String!, address: String!, phone: String!, email: String!, industry: String!): User
     createJobPosting(employerId: ID!, title: String!, description: String!, location: String!, jobType: String!, salaryRange: String!, experienceLevel: String!): JobPosting
-    createApplication(jobId: ID!, seekerId: ID!, resume: String!, coverLetter: String!): Application
+    createApplication(jobId: ID!, seekerId: ID!, fName: String!, lName: String!): JobPosting
     createCompanyProfile(employerId: ID!, companyName: String!, companyDescription: String!): CompanyProfile
     updateApplicationStatus(id: ID!, status: String!): Application
     createReview(userId: ID!, companyId: ID!, rating: Int!, comment: String): Review

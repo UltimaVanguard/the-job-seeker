@@ -9,16 +9,17 @@ import { HStack, Card, CardHeader, CardBody, CardFooter, Text,
 const EmployerHome = (employerId) => {
     const names = ['John Doe', 'Jane Doe', 'Joe Schmoe', 'John John', 'Jimmy John', 'Jacob Doomer', 'Cool Guy', 'Tom Tom']
 
+    console.log(employerId);
     const { loading, data } = useQuery(QUERY_COMPANY_JOBS, {
         variables: { employerId: employerId.id }
     })
 
-    const jobs = data?.getCompanyJobs || []
-
-    console.log(jobs)
     if (loading) {
         return <div>Loading...</div>;
     } 
+
+    console.log(data)
+    const jobs = data?.getCompanyJobs || []
 
     if (!jobs.length) {
         return (
