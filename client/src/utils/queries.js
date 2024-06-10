@@ -4,9 +4,21 @@ export const QUERY_USER = gql`
   query getUser($id: ID!) {
     getUser(id: $id) {
       id
+      username
+      email
+      role
       seekerProfile {
+        address
         fName
         lName
+        phone
+      }
+      employerProfile {
+        companyName
+        address
+        email
+        phone
+        industry
       }
     }
   }
@@ -17,13 +29,27 @@ export const QUERY_ME = gql`
     me {
       id
       username
+      email
       role
+      seekerProfile {
+        address
+        fName
+        lName
+        phone
+      }
+      employerProfile {
+        companyName
+        address
+        email
+        phone
+        industry
+      }
     }
   }
 `;
 
 export const QUERY_ALL_JOBS = gql`
-  query Query {
+  query getJobs {
     getJobs {
       id
       title
@@ -35,7 +61,7 @@ export const QUERY_ALL_JOBS = gql`
 `;
 
 export const QUERY_COMPANY_JOBS = gql`
-  query Query($employerId: ID!) {
+  query getCompanyJobs($employerId: ID!) {
     getCompanyJobs(employerId: $employerId) {
       id
       title

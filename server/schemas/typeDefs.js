@@ -50,11 +50,11 @@ const typeDefs = `
   }
 
   type Application {
-    id: ID!
-    jobId: ID!
-    seekerId: ID!
-    fName: String!
-    lName: String!
+    id: ID
+    jobId: ID
+    seekerId: ID
+    fName: String
+    lName: String
   }
 
   type CompanyProfile {
@@ -81,6 +81,8 @@ const typeDefs = `
 
   type Query {
     getUser(id: ID!): User
+    getJobs: [JobPosting]
+    getCompanyJobs(employerId: ID!): [JobPosting]
     getJobPosting(id: ID!): JobPosting
     getApplication(id: ID!): Application
     getReviewsByCompany(companyId: ID!): [Review]

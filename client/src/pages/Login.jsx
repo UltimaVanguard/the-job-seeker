@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER, ADD_USER } from '../utils/mutations';
 
 
-import { Heading } from '@chakra-ui/react';
+import { Heading, Alert } from '@chakra-ui/react';
 
 import Auth from '../utils/auth';
 
@@ -52,6 +52,7 @@ const Login = ({ loginState, setLoginState }) => {
             console.log(data.login.token)
             Auth.login(data.login.token);
         } catch (err) {
+            alert
             console.error(err);
         };
 
@@ -74,6 +75,13 @@ const Login = ({ loginState, setLoginState }) => {
             Auth.signup(data.createUser.token);
         } catch (err) {
             console.error(err);
+            return (
+                <Alert status='error'>
+                    <AlertIcon />
+                    <AlertTitle>Error:</AlertTitle>
+                    <AlertDescription>There was an error, please try again!</AlertDescription>
+                </Alert>
+            )
         };
 
         setSignupState({
